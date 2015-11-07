@@ -10,36 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dqh.hpp"
+#include "ft_retro.hpp"
 #include "Player.hpp"
 
-Player(void) : Ship(){
+Player::Player(void) : Ship(){
 	return;
 }
-Player(uint w, uint h,uint hp, uint dmg) : Ship(w, h, hp){
+Player::Player(unsigned int w, unsigned int h,unsigned int hp) : Ship(w, h, hp){
 	return;
 }
-Player(Player const & src) : Ship(src){
+Player::Player(Player const & src) : Ship(src){
 	*this = src;
 	return ;
 }
 
-~Player(void){
+Player::~Player(void){
 
 }
 
-Player 					& operator=(Player const & src){
+Player 					& Player::operator=(Player const & rhs){
 	setW(rhs.getW());
 	setH(rhs.getH());
 	setHp(rhs.getHp());	
 	return *this;
 }
 
-void			move(uint w, uint h){
-	/* compare (w param) < getMaxX de map
-		setW(w);
-		compare (h param) < getMaxY de map
-	*/
+void			Player::ploum(int c){
+	if (c)
+	{
+		setW(this->_w + 1);
+	}
+
 }
 
 /*

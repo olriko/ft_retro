@@ -1,10 +1,12 @@
+#include "ft_retro.hpp"
+
 Ship::Ship(void){
-	setX(0);
-	setY(0);
+	setW(0);
+	setH(0);
 	setHp(1);
 	return ;
 }
-Ship::Ship(uint w, uint h, uint hp){
+Ship::Ship(unsigned int w, unsigned int h, unsigned int hp){
 	setW(w);
 	setH(h);
 	setHp(hp);
@@ -14,37 +16,38 @@ Ship::Ship(uint w, uint h, uint hp){
 Ship::~Ship(void){
 
 }
-uint					Ship::getW(void) const{
+unsigned int					Ship::getW(void) const{
 	return _w;
 }
-uint					Ship::getH(void) const{
+unsigned int					Ship::getH(void) const{
 	return _h;
 }
-uint					Ship::getHp(void) const{
+unsigned int					Ship::getHp(void) const{
 	return _hp;
 }
-void					Ship::setX(uint w){
+void					Ship::setW(unsigned int w){
 	_w = w;
 	return ;
 }
-void					Ship::setY(uint h){
+void					Ship::setH(unsigned int h){
 	_h = h;
 	return ;
 }
-void					Ship::setHp(uint hp){
+void					Ship::setHp(unsigned int hp){
 	_hp = hp;
 	return ;
 }
 
-void					Ship::move(uint w, uint h) {
+void					Ship::ploum(unsigned int w, unsigned int h) {
 	setW(w);
 	setH(h);
 	return ;
 }
 
-Ship 					& Ship::operator=(Ship const & src){
+Ship 					& Ship::operator=(Ship const & rhs){
 	setW(rhs.getW());
 	setH(rhs.getH());
+	return *this;
 }
 
 Ship::Ship(Ship const & src){

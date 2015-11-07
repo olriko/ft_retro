@@ -10,27 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dqh.hpp"
-#include "Ship.class.hpp"
+#include "ft_retro.hpp"
 #include <string>
 #include <chrono>
 #include <thread>
 
-void		print_spaceship(Ship myShip)
+void		print_spaceship(Player toto)
 {
-	mvprintw(myShip.getH(), myShip.getW() - 6, "___---=======---___");
-	mvprintw(myShip.getH() + 1, myShip.getW() - 8, "(=__\\   /.. ..\\   /__=)");
-	mvprintw(myShip.getH() + 2, myShip.getW() - 3, "---\\__O__/---");
-}
-
-void		ft_newgame (Ship myShip)
-{
-	int		h;
-	int		w;
-
-	getmaxyx(stdscr, w, h);
-	myShip.setW(w);
-	myShip.setH(h);
+	mvprintw(toto.getH(), toto.getW() - 6, "___---=======---___");
+	mvprintw(toto.getH() + 1, toto.getW() - 8, "(=__\\   /.. ..\\   /__=)");
+	mvprintw(toto.getH() + 2, toto.getW() - 3, "---\\__O__/---");
 }
 
 void		ft_move(int c)
@@ -53,12 +42,10 @@ int			ft_refresh(void)
 int			main(void)
 {
 	int		c;
-	int i = 0;
-
-	Ship	myShip("my_ship");
+	
+	Player	myPlayer(20 , 40, 1);
 
 	initscr();
-	ft_newgame(myShip);
 	keypad(stdscr, true);
 	while (1)
 	{
@@ -66,11 +53,8 @@ int			main(void)
 		if (c == 27)
 			break ;
 		ft_refresh();
-		if (c == KEY_LEFT)  // debug
-			mvprintw(40, i++ % 4, "cc"); // debug
-		if (c == KEY_LEFT || c == KEY_LEFT)
-			ft_move(c);
-		print_spaceship(myShip);
+		myPlayer.ploum(c);
+		print_spaceship(myPlayer);
 		//	printw("Window too small.\nThat's what she said.");
 	}
 	endwin();

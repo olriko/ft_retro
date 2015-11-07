@@ -13,7 +13,7 @@
 #ifndef PLAYER_HPP
 # define PLAYER_HPP
 
-# include "dqh.hpp"
+# include "ft_retro.hpp"
 # include <iostream>
 # include <iomanip>
 # include <sstream>
@@ -24,13 +24,13 @@ class Player : public Ship {
 public:
 
 	Player(void);
-	Player(uint w, uint h,uint hp, uint dmg);
+	Player(unsigned int w, unsigned int h,unsigned int hp);
 	Player(Player const & src);
 	~Player(void);
 
-	Player 					& operator=(Player const & src);
+	Player 					& operator=(Player const & rhs);
 
-	void			move(uint w, uint h);
+	void			ploum(int c);
 	//void			shoot(void) const;
 	//void			destroy(void);
 
@@ -38,6 +38,6 @@ private:
 	
 };
 
-std::ostream 	& operator<<(std::ostream & out, Player const & src);
+//std::ostream 	& operator<<(std::ostream & out, Player const & src);
 
 #endif

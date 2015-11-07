@@ -1,14 +1,21 @@
-Enemy(void) : Ship(){
+#include "ft_retro.hpp"
+#include "Ship.hpp"
+#include "Enemy.hpp"
+
+Enemy::Enemy(void) : Ship(){
 	return;
 }
-Enemy(uint w, uint h, uint hp) : Ship(w, h, hp){
+
+Enemy::Enemy(unsigned int w, unsigned int h, unsigned int hp) : Ship(w, h, hp){
 	return;
 }
-Enemy(Enemy const & src) : Ship(w, h, hp){
+
+Enemy::Enemy(Enemy const & src) : Ship(w, h, hp){
 	*this = src;
 	return ;
 }
-~Enemy(void){
+
+Enemy::~Enemy(void){
 	return;
 }
 
@@ -20,7 +27,7 @@ Enemy 			& operator=(Enemy const & src){
 }
 
 //void			destroy(void);
-void			move(uint h){
+void			Enemy::move(unsigned int h){
 	setH(rhs.getH());
 	setHp(rhs.getHp());	
 	return *this;

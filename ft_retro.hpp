@@ -10,14 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DQH_HPP
-# define DQH_HPP
+#ifndef FT_RETRO
+# define FT_RETRO
 
 # include <ncurses.h>
 # include <time.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include "Enemy.hpp"
+# include "Ship.hpp"
+# include "Player.hpp"
 
 # define MOVE KEY_LEFT||KEY_RIGHT||KEY_UP||KEY_DOWN
 
