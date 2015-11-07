@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/07 16:11:05 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/07 16:18:44 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/07 17:40:43 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,18 @@ public:
 	Ship( Ship const &src);
 	~Ship( void );
 	Ship 			&operator=( Ship const& rhs );
-
+	void			setW(int w);
+	int				getW( void );
+	void			setH(int h);
+	int				getH( void );
 
 private:
-	unsigned int	_pos;
+	std::string		_name;
+	unsigned int	_posW;
+	unsigned int	_posH;
 	unsigned int	_HealthPoints;
 };
 
 std::ostream		&operator<<( std::ostream &o, Ship const &rhs );
+
+#endif
