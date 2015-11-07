@@ -6,7 +6,7 @@ Ship::Ship(void){
 	setHp(1);
 	return ;
 }
-Ship::Ship(unsigned int w, unsigned int h, unsigned int hp){
+Ship::Ship(unsigned int w, unsigned int h, unsigned int hp, Map *map){
 	setW(w);
 	setH(h);
 	setHp(hp);
@@ -38,7 +38,7 @@ void					Ship::setHp(unsigned int hp){
 	return ;
 }
 
-void					Ship::ploum(unsigned int w, unsigned int h) {
+void					Ship::move(unsigned int w, unsigned int h) {
 	setW(w);
 	setH(h);
 	return ;
@@ -55,6 +55,10 @@ Ship::Ship(Ship const & src){
 	return ;
 }
 
+void	Ship::setMap(Map *map){
+	_map = map;
+	return;
+}
 
 /*std::ostream 	& operator<<(std::ostream & o, Ship const & rhs){
 

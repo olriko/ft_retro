@@ -42,11 +42,13 @@ int			ft_refresh(void)
 int			main(void)
 {
 	int		c;
-	
+
+	Map				* map    = new Map(80, 50);	
 	Player	myPlayer(20 , 40, 1);
 
 	initscr();
 	keypad(stdscr, true);
+	myPlayer->setMap(map);
 	while (1)
 	{
 		c = getch();
