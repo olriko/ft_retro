@@ -6,13 +6,15 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/07 15:37:56 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/07 17:40:00 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/07 18:53:27 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dqh.hpp"
 #include "Ship.class.hpp"
 #include <string>
+#include <chrono>
+#include <thread>
 
 void		print_spaceship(Ship myShip)
 {
@@ -42,6 +44,7 @@ void		ft_move(int c)
 int			ft_refresh(void)
 {
 	clear();
+	//	erase();
 	move(0, 0);
 	refresh();
 	return (1);
@@ -50,6 +53,8 @@ int			ft_refresh(void)
 int			main(void)
 {
 	int		c;
+	int i = 0;
+
 	Ship	myShip("my_ship");
 
 	initscr();
@@ -61,10 +66,12 @@ int			main(void)
 		if (c == 27)
 			break ;
 		ft_refresh();
+		if (c == KEY_LEFT)  // debug
+			mvprintw(40, i++ % 4, "cc"); // debug
 		if (c == KEY_LEFT || c == KEY_LEFT)
-			ft_move(c);//mvprintw(30, 30, "BJR");
+			ft_move(c);
 		print_spaceship(myShip);
-	//	printw("Window too small.\nThat's what she said.");
+		//	printw("Window too small.\nThat's what she said.");
 	}
 	endwin();
 	return (0);

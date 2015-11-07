@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/07 16:11:05 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/07 17:40:43 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/07 18:38:26 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ class Ship {
 
 public:
 	Ship( std::string name );
-	Ship( Ship const &src);
+//	Ship( Ship const &src);
 	~Ship( void );
 	Ship 			&operator=( Ship const& rhs );
 	void			setW(int w);
 	int				getW( void );
 	void			setH(int h);
 	int				getH( void );
+	std::string		getName( void );
 
 private:
 	std::string		_name;
