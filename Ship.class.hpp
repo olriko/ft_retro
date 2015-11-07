@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dqh.hpp                                            :+:      :+:    :+:   */
+/*   Ship.class.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/07 15:00:19 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/07 15:44:29 by cdeniau          ###   ########.fr       */
+/*   Created: 2015/11/07 16:11:05 by cdeniau           #+#    #+#             */
+/*   Updated: 2015/11/07 16:18:44 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DQH_HPP
-# define DQH_HPP
+#ifndef SHIP_CLASS_HPP
+# define SHIP_CLASS_HPP
 
-# include <ncurses.h>
-# include <time.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
+# include <iostream>
+# include <iomanip>
+# include <sstream>
 
-# define MOVE KEY_LEFT||KEY_RIGHT||KEY_UP||KEY_DOWN
+class Ship {
 
-#endif
+public:
+	Ship( std::string name );
+	Ship( Ship const &src);
+	~Ship( void );
+	Ship 			&operator=( Ship const& rhs );
+
+
+private:
+	unsigned int	_pos;
+	unsigned int	_HealthPoints;
+};
+
+std::ostream		&operator<<( std::ostream &o, Ship const &rhs );
