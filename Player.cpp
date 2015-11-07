@@ -35,12 +35,11 @@ Player 					& Player::operator=(Player const & rhs){
 	return *this;
 }
 
-void			Player::ploum(int c){
-	if (c)
-	{
-		setW(this->_w + 1);
-	}
-
+void			Player::move(int c, int max_w){
+		if (c == KEY_RIGHT && this->_w < max_w)
+			setW(this->_w + 1);
+		else if (c == KEY_LEFT && this->_w > 0)
+			setW(this->_w - 1);
 }
 
 /*

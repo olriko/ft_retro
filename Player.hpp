@@ -30,7 +30,7 @@ public:
 
 	Player 					& operator=(Player const & rhs);
 
-	void			ploum(int c);
+	void			move(int c, int max_w);
 	//void			shoot(void) const;
 	//void			destroy(void);
 

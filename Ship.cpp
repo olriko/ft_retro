@@ -6,7 +6,7 @@ Ship::Ship(void){
 	setHp(1);
 	return ;
 }
-Ship::Ship(unsigned int w, unsigned int h, unsigned int hp, Map *map){
+Ship::Ship(unsigned int w, unsigned int h, unsigned int hp){
 	setW(w);
 	setH(h);
 	setHp(hp);
@@ -54,13 +54,13 @@ Ship::Ship(Ship const & src){
 	*this = src;
 	return ;
 }
-
+/*
 void	Ship::setMap(Map *map){
 	_map = map;
 	return;
 }
 
-/*std::ostream 	& operator<<(std::ostream & o, Ship const & rhs){
+std::ostream 	& operator<<(std::ostream & o, Ship const & rhs){
 
 	return o;
 }*/

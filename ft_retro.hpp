@@ -18,9 +18,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# include "Enemy.hpp"
 # include "Ship.hpp"
 # include "Player.hpp"
+# include "Map.hpp"
 
 # define MOVE KEY_LEFT||KEY_RIGHT||KEY_UP||KEY_DOWN
 

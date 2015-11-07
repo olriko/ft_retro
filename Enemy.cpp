@@ -26,6 +26,14 @@ Enemy 			& operator=(Enemy const & src){
 	return *this;
 }
 
+void			Enemy::move(int c, int max_w){
+		if (c == KEY_RIGHT && this->_w < max_w)
+			setW(this->_w + 1);
+		else if (c == KEY_LEFT && this->_w > 0)
+			setW(this->_w - 1);
+}
+
+
 //void			destroy(void);
 void			Enemy::move(unsigned int h){
 	setH(rhs.getH());

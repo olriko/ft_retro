@@ -6,13 +6,13 @@
 #    By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/01 10:24:58 by cdeniau           #+#    #+#              #
-#    Updated: 2015/11/07 19:58:09 by mzane            ###   ########.fr        #
+#    Updated: 2015/11/07 22:37:17 by mzane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_retro
 
-SRC = main.cpp Player.cpp Ship.cpp\
+SRC = main.cpp Player.cpp Ship.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

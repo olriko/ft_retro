@@ -21,7 +21,7 @@ void		print_spaceship(Player toto)
 	mvprintw(toto.getH() + 1, toto.getW() - 8, "(=__\\   /.. ..\\   /__=)");
 	mvprintw(toto.getH() + 2, toto.getW() - 3, "---\\__O__/---");
 }
-
+/*)
 void		ft_move(int c)
 {
 	if (c == KEY_RIGHT)
@@ -29,7 +29,7 @@ void		ft_move(int c)
 	else if (c == KEY_LEFT)
 		; //operateur--
 }
-
+*/
 int			ft_refresh(void)
 {
 	clear();
@@ -42,21 +42,32 @@ int			ft_refresh(void)
 int			main(void)
 {
 	int		c;
-
-	Map				* map    = new Map(80, 50);	
+	int max_h;
+	int max_w;
+	int i;
+	i = 0;
+	//Map				* map    = new Map(80, 50);	
 	Player	myPlayer(20 , 40, 1);
-
+	//WINDOW * win = newwin(50, 40, 0, 0);
 	initscr();
+	c = 0;
 	keypad(stdscr, true);
-	myPlayer->setMap(map);
+	getmaxyx(stdscr, max_h, max_w);
+	//myPlayer.setMap(map);
 	while (1)
 	{
-		c = getch();
-		if (c == 27)
-			break ;
+		if ((c = getch()) != ERR)
+		{
+			if (c == 27)
+				break ;
+		}
+
+		mvprintw(i % 5, 10, "coucou");
+		i++;
 		ft_refresh();
-		myPlayer.ploum(c);
-		print_spaceship(myPlayer);
+		usleep(50);
+		//myPlayer.move(c, max_w);
+		//print_spaceship(myPlayer);
 		//	printw("Window too small.\nThat's what she said.");
 	}
 	endwin();
