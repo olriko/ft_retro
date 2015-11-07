@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/07 16:10:38 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/07 16:10:50 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/07 23:26:11 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void			Player::move(int c, int max_w){
 			setW(this->_w + 1);
 		else if (c == KEY_LEFT && this->_w > 0)
 			setW(this->_w - 1);
+		clear();
 }
 
 /*

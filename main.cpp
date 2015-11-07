@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/07 15:37:56 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/07 18:53:27 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/07 23:32:48 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ int			main(void)
 	int		c;
 	int max_h;
 	int max_w;
-	int i;
-	i = 0;
+	int i = 0;
 	//Map				* map    = new Map(80, 50);	
 	Player	myPlayer(20 , 40, 1);
 	//WINDOW * win = newwin(50, 40, 0, 0);
@@ -54,21 +53,24 @@ int			main(void)
 	keypad(stdscr, true);
 	getmaxyx(stdscr, max_h, max_w);
 	//myPlayer.setMap(map);
+		noecho();
+		nodelay(stdscr, true);
+		curs_set(0);
+
 	while (1)
 	{
 		if ((c = getch()) != ERR)
 		{
+			myPlayer.move(c, max_w);
 			if (c == 27)
 				break ;
 		}
-
-		mvprintw(i % 5, 10, "coucou");
+		mvprintw(i % 15, 20, std::to_string(i).c_str());
 		i++;
-		ft_refresh();
-		usleep(50);
-		//myPlayer.move(c, max_w);
-		//print_spaceship(myPlayer);
+		usleep(5000);
+		print_spaceship(myPlayer);
 		//	printw("Window too small.\nThat's what she said.");
+		refresh();
 	}
 	endwin();
 	return (0);
