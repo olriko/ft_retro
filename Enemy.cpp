@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/08 08:43:00 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 09:19:04 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 09:26:46 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Enemy::Enemy(void) : Ship(){
 }
 
 Enemy::Enemy(int w, int h, int hp) : Ship(w, h, hp){
-	
+
 	this->_w = w;
 	this->_h = h;
 	this->_hp = 0;
@@ -62,12 +62,12 @@ void Enemy::gen_Mov()
 {
 	if ( random() % 20 )
 	{
-			if ( this->getW() - 1 > 0 )
-				this->setW( this->getW() - 1 );
-			if ( this->getW() + 1 < MAX_W )
-				this->setW( this->getW() + 1 );
-			else
-				return;
+		if ( this->getW() - 1 > 0 )
+			this->setW( this->getW() - 1 );
+		if ( this->getW() + 1 < MAX_W )
+			this->setW( this->getW() + 1 );
+		else
+			return;
 	}
 }
 
@@ -75,12 +75,12 @@ void Enemy::gen_Bullet()
 {
 	if ( random() % 20 )
 	{
-			if ( this->getW() - 1 > 0 )
-				this->setW( this->getW() - 1 );
-			if ( this->getW() + 1 < MAX_W )
-				this->setW( this->getW() + 1 );
-			else
-				return;
+		if ( this->getW() - 1 > 0 )
+			this->setW( this->getW() - 1 );
+		if ( this->getW() + 1 < MAX_W )
+			this->setW( this->getW() + 1 );
+		else
+			return;
 	}
 }
 
@@ -90,13 +90,13 @@ void Enemy::create_Enemy(Enemy enemy[MAX_ENEMY], int w, int h){
 
 	while (i < MAX_ENEMY)
 	{
-			if (enemy[i].getHp() <= 0)
-			{	
-				enemy[i].setW(w);
-				enemy[i].setH(h);
-				enemy[i].setHp(1);
-				break;
-			}
+		if (enemy[i].getHp() <= 0)
+		{	
+			enemy[i].setW(w);
+			enemy[i].setH(h);
+			enemy[i].setHp(1);
+			break;
+		}
 		i++;
 	}
 }
@@ -106,13 +106,13 @@ void Enemy::create_Bullet(Enemy bullet[MAX_BULLET], int w, int h){
 
 	while (i < MAX_BULLET)
 	{
-			if (bullet[i].getHp() <= 0)
-			{	
-				bullet[i].setW(w);
-				bullet[i].setH(h);
-				bullet[i].setHp(1);
-				break;
-			}
+		if (bullet[i].getHp() <= 0)
+		{	
+			bullet[i].setW(w);
+			bullet[i].setH(h);
+			bullet[i].setHp(1);
+			break;
+		}
 		i++;
 	}
 }
@@ -129,12 +129,22 @@ void Enemy::check_Position(Enemy enemy[MAX_ENEMY]) // projectile c'est le contra
 	}
 }
 
-void Enemy::check_Bullet(Enemy bullet[MAX_BULLET])
+void Enemy::check_Bullet(Enemy bullet[MAX_BULLET], Enemy enemy[MAX_ENEMY])
 {
 	int i = 0;
+	int	j;
 
 	while (i < MAX_BULLET)
 	{
+		j = -1;
+		while (++j < MAX_ENEMY)
+		{
+			if ((enemy[j].getW() == bullet[i].getW()) && enemy[j].getH() == bullet[i].getH())
+			{
+				bullet[i].setHp(0); //destroy
+				enemy[j].setHp(0); //destroy
+			}
+		}
 		if (bullet[i].getH() <= 0) // < pour le tir player qui monte
 			bullet[i].setHp(0); //destroy
 		i++;
@@ -147,13 +157,13 @@ void Enemy::update_Position(Enemy enemy[MAX_ENEMY])
 	int i = 0;
 	while (i < MAX_ENEMY)
 	{
-			if (enemy[i].getHp() > 0)
-			{
-				enemy[i] += 1; //enemey ++
-				enemy[i].gen_Mov(); 
-				mvprintw(enemy[i].getH(), enemy[i].getW(), ENEMY);
-			}
-			i++;
+		if (enemy[i].getHp() > 0)
+		{
+			enemy[i] += 1; //enemey ++
+			enemy[i].gen_Mov(); 
+			mvprintw(enemy[i].getH(), enemy[i].getW(), ENEMY);
+		}
+		i++;
 	}
 }
 
@@ -162,12 +172,12 @@ void Enemy::update_Bullet(Enemy bullet[MAX_BULLET])
 	int i = 0;
 	while (i < MAX_BULLET)
 	{
-			if (bullet[i].getHp() > 0)
-			{
-				bullet[i] -= 1; //enemey ++
-				bullet[i].gen_Bullet(); 
-				mvprintw(bullet[i].getH(), bullet[i].getW(), "|");
-			}
-			i++;
+		if (bullet[i].getHp() > 0)
+		{
+			bullet[i] -= 1; //enemey ++
+			bullet[i].gen_Bullet(); 
+			mvprintw(bullet[i].getH(), bullet[i].getW(), "|");
+		}
+		i++;
 	}
 }

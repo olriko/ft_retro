@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/07 15:37:56 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 09:15:07 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 09:21:18 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void		scr_update( Player *player, Enemy *enemy, Enemy *bullet)
 	erase();	
 	mvprintw(player->getH(), player->getW(), PLAYER);
 	enemy->check_Position(enemy);
-	bullet->check_Bullet(bullet);
+	bullet->check_Bullet(bullet, enemy);
 	// if player->getHp() <= 0
 		//exit(0);
 	enemy->update_Position(enemy);
