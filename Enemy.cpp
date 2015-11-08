@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/08 08:43:00 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 12:05:27 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 15:25:20 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,11 +117,23 @@ void Enemy::create_Bullet(Enemy bullet[MAX_BULLET], int w, int h){
 	}
 }
 
+void Enemy::create_Special(Enemy bullet[MAX_BULLET], int w, int h){
+	int i = 0;
+
+	(void)w;
+	while (i < MAX_W)
+	{
+		bullet[i].setW(i);
+		bullet[i].setH(h);
+		bullet[i].setHp(1);
+		i++;
+	}
+}
+
 void Enemy::check_Position(Enemy enemy[MAX_ENEMY], Player *player) // projectile c'est le contraire
 {
 	int i = 0;
 
-(void)player;
 	while (i < MAX_ENEMY)
 	{
 		if ((player->getW() == enemy[i].getW()) && (player->getH() == enemy[i].getH()))
@@ -142,7 +154,7 @@ void Enemy::check_Bullet(Enemy bullet[MAX_BULLET], Enemy enemy[MAX_ENEMY])
 		j = -1;
 		while (++j < MAX_ENEMY)
 		{
-			if ((enemy[j].getW() == bullet[i].getW()) && enemy[j].getH() == bullet[i].getH())
+			if (((enemy[j].getW() == bullet[i].getW()) && enemy[j].getH() >= bullet[i].getH()))
 			{
 				bullet[i].setHp(0); //destroy
 				enemy[j].setHp(0); //destroy

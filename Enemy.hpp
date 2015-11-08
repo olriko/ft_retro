@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/08 08:59:33 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 14:25:19 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 15:07:18 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ public:
 	void 			gen_Bullet();
 	void 			create_Enemy(Enemy enemy[MAX_ENEMY], int w, int h);
 	void 			create_Bullet(Enemy Bullet[MAX_BULLET], int w, int h);
+	void 			create_Special(Enemy Bullet[MAX_BULLET], int w, int h);
 	void 			check_Position(Enemy enemy[MAX_ENEMY], Player *player);
 	void 			check_Bullet(Enemy bullet[MAX_BULLET], Enemy enemy[MAX_ENEMY]);
 

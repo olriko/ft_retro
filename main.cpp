@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/07 15:37:56 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 15:00:45 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 15:07:57 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void get_action(Player *player, Enemy *bullet ){
 			else if (c == KEY_LEFT && player->getH() > 0)
 				player->setW(player->getW() - 1);
 			else if (c == ' ')
-				;
+				bullet->create_Special(bullet, player->getW(), player->getH());
 			else if (c == 27)
 				exit(0);
 			bullet->create_Bullet(bullet, player->getW(), player->getH());
