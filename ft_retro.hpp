@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/07 15:00:19 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 09:32:00 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 14:24:48 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define PLAYER		"^"
 # define ENEMY		"o"
 # define FSHOT		124
-# define MAX_ENEMY 	8
+# define MAX_ENEMY 	6
 //# define MAX_PROJECTILE 30
 # define FRAME 60
 

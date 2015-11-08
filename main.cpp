@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/07 15:37:56 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 10:15:45 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 14:19:33 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <string>
 #include <chrono>
 #include <thread>
-
 
 void		scr_init( void ){
 
@@ -27,7 +26,6 @@ void		scr_init( void ){
 	keypad(stdscr, TRUE);
 	timeout(0);
 }
-
 
 void get_action(Player *player, Enemy *bullet ){
 
@@ -42,9 +40,10 @@ void get_action(Player *player, Enemy *bullet ){
 			else if (c == KEY_LEFT && player->getH() > 0)
 				player->setW(player->getW() - 1);
 			else if (c == ' ')
-				bullet->create_Bullet(bullet, player->getW(), player->getH());
+				;
 			else if (c == 27)
 				exit(0);
+			bullet->create_Bullet(bullet, player->getW(), player->getH());
 		}
 	}
 }
@@ -55,8 +54,12 @@ void		random_generate(Enemy *enemy) {
 }
 
 void		scr_update( Player *player, Enemy *enemy, Enemy *bullet) {
-	erase();	
+	erase();
 	mvprintw(player->getH(), player->getW(), PLAYER);
+	move(0, 0);
+	mvprintw(0, 0, "HP:");
+	mvprintw(3, 0, "Time:");
+	mvprintw(3, 6, "%2.1f", ((double)clock() / 36000));
 	enemy->check_Position(enemy, player);
 	bullet->check_Bullet(bullet, enemy);
 	if (player->getHp() <= 0)
@@ -82,8 +85,7 @@ void		ncurses_loop( Player *player, Enemy *enemy, Enemy *bullet) {
 	}
 }
 
-
-int 		main(void){
+int 		main(void) {
 	Player 		*player = new Player;
 	Enemy 		*enemy = new Enemy[MAX_ENEMY];
 	Enemy 		*bullet = new Enemy[MAX_BULLET];

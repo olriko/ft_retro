@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/08 08:59:33 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 10:32:24 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 14:25:19 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "ft_retro.hpp"
 # include "Ship.hpp"
-# define MAX_ENEMY 8
-# define MAX_BULLET 50
+# define MAX_ENEMY 6
+# define MAX_BULLET 200
 class Enemy : public  Ship {
 
 public:

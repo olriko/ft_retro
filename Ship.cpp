@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Ship.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/11/08 12:19:28 by cdeniau           #+#    #+#             */
+/*   Updated: 2015/11/08 12:19:38 by cdeniau          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_retro.hpp"
 
 Ship::Ship(void){
@@ -44,7 +56,7 @@ void					Ship::move(unsigned int w, unsigned int h) {
 	return ;
 }
 
-Ship 					& Ship::operator=(Ship const & rhs){
+Ship 					&Ship::operator=(Ship const & rhs){
 	setW(rhs.getW());
 	setH(rhs.getH());
 	return *this;
@@ -54,6 +66,7 @@ Ship::Ship(Ship const & src){
 	*this = src;
 	return ;
 }
+
 /*
 void	Ship::setMap(Map *map){
 	_map = map;

@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/08 10:39:02 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 10:46:35 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 12:17:08 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	Player(Player const & src);
 	~Player(void);
 
-	Player 					& operator=(Player const & rhs);
+	Player 			&operator=(Player const &rhs);
 
 	void			move(int c, int max_w);
 	void			shoot(void);
