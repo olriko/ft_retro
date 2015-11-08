@@ -12,7 +12,7 @@
 
 NAME = ft_retro
 
-SRC = main.cpp Player.cpp Ship.cpp \
+SRC = main.cpp Player.cpp Ship.cpp Enemy.cpp\
 
 OBJ = $(SRC:.cpp=.o)
 

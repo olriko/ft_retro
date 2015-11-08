@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/07 15:37:56 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/07 23:32:48 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/07 18:53:27 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,63 +15,86 @@
 #include <chrono>
 #include <thread>
 
-void		print_spaceship(Player toto)
-{
-	mvprintw(toto.getH(), toto.getW() - 6, "___---=======---___");
-	mvprintw(toto.getH() + 1, toto.getW() - 8, "(=__\\   /.. ..\\   /__=)");
-	mvprintw(toto.getH() + 2, toto.getW() - 3, "---\\__O__/---");
-}
-/*)
-void		ft_move(int c)
-{
-	if (c == KEY_RIGHT)
-		; //operateur++
-	else if (c == KEY_LEFT)
-		; //operateur--
-}
-*/
-int			ft_refresh(void)
-{
-	clear();
-	//	erase();
-	move(0, 0);
-	refresh();
-	return (1);
-}
 
-int			main(void)
-{
-	int		c;
-	int max_h;
-	int max_w;
-	int i = 0;
-	//Map				* map    = new Map(80, 50);	
-	Player	myPlayer(20 , 40, 1);
-	//WINDOW * win = newwin(50, 40, 0, 0);
+void		scr_init( void ){
+
+	int			max_y, max_x;
+
 	initscr();
-	c = 0;
-	keypad(stdscr, true);
-	getmaxyx(stdscr, max_h, max_w);
-	//myPlayer.setMap(map);
-		noecho();
-		nodelay(stdscr, true);
-		curs_set(0);
+	curs_set(0); /* Hide cursor */
+	getmaxyx(stdscr, max_y, max_x);
+	noecho();
+	keypad(stdscr, TRUE);
+	timeout(0);
+}
 
-	while (1)
-	{
-		if ((c = getch()) != ERR)
-		{
-			myPlayer.move(c, max_w);
-			if (c == 27)
-				break ;
-		}
-		mvprintw(i % 15, 20, std::to_string(i).c_str());
-		i++;
-		usleep(5000);
-		print_spaceship(myPlayer);
-		//	printw("Window too small.\nThat's what she said.");
-		refresh();
+
+void get_action(Player *player){
+
+	int		c = 0;
+
+	while ( (c = getch() ) != ERR )
+	{	
+			if (c)
+			{
+				if (c == KEY_RIGHT && player->getW() < MAX_W)
+					player->setW(player->getW() + 1);
+				else if (c == KEY_LEFT && player->getH() > 0)
+					player->setW(player->getW() - 1);
+				else if (c == ' ')
+				{
+					mvprintw( player->getH(), player->getW(), FSHOT);
+				}
+				else if (c == 27)
+					break;
+			}
 	}
-	endwin();
+
+}
+
+void		random_generate(Enemy *enemy)
+{
+	if (rand() % 6)
+			enemy->create_Enemy(enemy, random() % MAX_W, 0);
+}
+
+void		scr_update( Player *player, Enemy *enemy)
+{
+	erase();	
+	mvprintw(player->getH(), player->getW(), PLAYER);
+	enemy->check_Position(enemy);
+	// if player->getHp() <= 0
+		//exit(0);
+	enemy->update_Position(enemy);
+	refresh();
+}
+
+void		ncurses_loop( Player *player, Enemy *enemy)
+{
+	struct timeval	st;
+	struct timeval	end;
+	while ( 1 )
+	{
+		gettimeofday(&st, NULL);
+		get_action(player);
+		random_generate(enemy);
+		gettimeofday(&end, NULL);
+		if (st.tv_usec < end.tv_usec)
+			st.tv_usec = end.tv_usec;;
+		usleep(( FRAME * 1000 ) - ( end.tv_usec - st.tv_usec ));
+	    scr_update(player, enemy);
+	}
+}
+
+
+int 		main(void){
+	Player 		*player = new Player;
+	Enemy 		*enemy = new Enemy[MAX_ENEMY];
+
+	srand( time(NULL) );
+	scr_init();
+	scr_update( player, enemy);
+	ncurses_loop(player, enemy);
 	return (0);
 }
+

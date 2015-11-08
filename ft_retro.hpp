@@ -12,7 +12,8 @@
 
 #ifndef FT_RETRO
 # define FT_RETRO
-
+# define MAX_W		76
+# define MAX_H		78
 # include <ncurses.h>
 # include <time.h>
 # include <unistd.h>
@@ -20,8 +21,14 @@
 # include <string.h>
 # include "Ship.hpp"
 # include "Player.hpp"
-# include "Map.hpp"
+# include "Enemy.hpp"
+#include <sys/time.h>
 
-# define MOVE KEY_LEFT||KEY_RIGHT||KEY_UP||KEY_DOWN
+# define PLAYER		"^"
+# define ENEMY		"o"
+# define FSHOT		"|"
+# define MAX_ENEMY 	50
+//# define MAX_PROJECTILE 30
+# define FRAME 60
 
 #endif

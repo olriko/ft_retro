@@ -26,7 +26,7 @@ protected:
 
 	 int					_w;
 	 int					_h;
-	unsigned int					_hp;
+	unsigned int			_hp;
 };
 
 //std::ostream 	& operator<<(std::ostream & out, Ship const & src);

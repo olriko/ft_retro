@@ -24,7 +24,7 @@ class Player : public Ship {
 public:
 
 	Player(void);
-	Player(unsigned int w, unsigned int h,unsigned int hp);
+	//Player(unsigned int w, unsigned int h,unsigned int hp);
 	Player(Player const & src);
 	~Player(void);
 
