@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Enemy.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/11/08 08:43:00 by cdeniau           #+#    #+#             */
+/*   Updated: 2015/11/08 09:19:04 by cdeniau          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_retro.hpp"
 #include "Ship.hpp"
 #include "Enemy.hpp"
@@ -59,6 +71,19 @@ void Enemy::gen_Mov()
 	}
 }
 
+void Enemy::gen_Bullet()
+{
+	if ( random() % 20 )
+	{
+			if ( this->getW() - 1 > 0 )
+				this->setW( this->getW() - 1 );
+			if ( this->getW() + 1 < MAX_W )
+				this->setW( this->getW() + 1 );
+			else
+				return;
+	}
+}
+
 
 void Enemy::create_Enemy(Enemy enemy[MAX_ENEMY], int w, int h){
 	int i = 0;
@@ -66,7 +91,8 @@ void Enemy::create_Enemy(Enemy enemy[MAX_ENEMY], int w, int h){
 	while (i < MAX_ENEMY)
 	{
 			if (enemy[i].getHp() <= 0)
-			{	enemy[i].setW(w);
+			{	
+				enemy[i].setW(w);
 				enemy[i].setH(h);
 				enemy[i].setHp(1);
 				break;
@@ -75,7 +101,23 @@ void Enemy::create_Enemy(Enemy enemy[MAX_ENEMY], int w, int h){
 	}
 }
 
-void Enemy::check_Position(Enemy enemy[MAX_ENEMY])
+void Enemy::create_Bullet(Enemy bullet[MAX_BULLET], int w, int h){
+	int i = 0;
+
+	while (i < MAX_BULLET)
+	{
+			if (bullet[i].getHp() <= 0)
+			{	
+				bullet[i].setW(w);
+				bullet[i].setH(h);
+				bullet[i].setHp(1);
+				break;
+			}
+		i++;
+	}
+}
+
+void Enemy::check_Position(Enemy enemy[MAX_ENEMY]) // projectile c'est le contraire
 {
 	int i = 0;
 
@@ -87,6 +129,17 @@ void Enemy::check_Position(Enemy enemy[MAX_ENEMY])
 	}
 }
 
+void Enemy::check_Bullet(Enemy bullet[MAX_BULLET])
+{
+	int i = 0;
+
+	while (i < MAX_BULLET)
+	{
+		if (bullet[i].getH() <= 0) // < pour le tir player qui monte
+			bullet[i].setHp(0); //destroy
+		i++;
+	}
+}
 
 void Enemy::update_Position(Enemy enemy[MAX_ENEMY])
 {
@@ -97,8 +150,23 @@ void Enemy::update_Position(Enemy enemy[MAX_ENEMY])
 			if (enemy[i].getHp() > 0)
 			{
 				enemy[i] += 1; //enemey ++
-				enemey[i].gen_Mov(); 
-				mvprintw(b[i].getH(), b[i].getW(), ENEMY);
+				enemy[i].gen_Mov(); 
+				mvprintw(enemy[i].getH(), enemy[i].getW(), ENEMY);
+			}
+			i++;
+	}
+}
+
+void Enemy::update_Bullet(Enemy bullet[MAX_BULLET])
+{
+	int i = 0;
+	while (i < MAX_BULLET)
+	{
+			if (bullet[i].getHp() > 0)
+			{
+				bullet[i] -= 1; //enemey ++
+				bullet[i].gen_Bullet(); 
+				mvprintw(bullet[i].getH(), bullet[i].getW(), "|");
 			}
 			i++;
 	}
