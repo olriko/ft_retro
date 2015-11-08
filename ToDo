@@ -1,0 +1,22 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ToDo                                               :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mzane <marvin@42.fr>                       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2015/11/08 07:06:59 by mzane             #+#    #+#              #
+#    Updated: 2015/11/08 07:15:10 by mzane            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+obligatoire:
+===========
+• The player can shoot at enemies
+• Basic collision handling (If an enemy touches you, you die)
+
+Bonus :
+=======
+Displaying score, time, number of lives, etc... on screen(facile)
+Entities that can occupy multiple squares(clem, il faut donc ajouter un autre type d'enemmy)
+Enemies can also shoot (meme chose que player)
+Player can go UP/DOWN (Facile)
