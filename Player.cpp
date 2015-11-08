@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/08 10:38:54 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 12:19:22 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 14:58:05 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Player.hpp"
 
 Player::Player(void) : Ship(){
-	this->_w = 1;
+	this->_w = 20;
 	this->_h = MAX_H - 10;
 	this->_hp = 5;
 }
@@ -30,7 +30,7 @@ Player::~Player(void){
 
 }
 
-Player 					& Player::operator=(Player const & rhs){
+Player 					&Player::operator=(Player const & rhs){
 	setW(rhs.getW());
 	setH(rhs.getH());
 	setHp(rhs.getHp());	
@@ -40,7 +40,7 @@ Player 					& Player::operator=(Player const & rhs){
 void			Player::move(int c, int max_w){
 		if (c == KEY_RIGHT && this->_w < max_w)
 			setW(this->_w + 1);
-		else if (c == KEY_LEFT && this->_w > 0)
+		if (c == KEY_LEFT && this->_w > 0)
 			setW(this->_w - 1);
 }
 

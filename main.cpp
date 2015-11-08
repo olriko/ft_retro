@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/07 15:37:56 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 14:19:33 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 15:00:45 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ void		scr_update( Player *player, Enemy *enemy, Enemy *bullet) {
 	mvprintw(player->getH(), player->getW(), PLAYER);
 	move(0, 0);
 	mvprintw(0, 0, "HP:");
-	mvprintw(3, 0, "Time:");
-	mvprintw(3, 6, "%2.1f", ((double)clock() / 36000));
+	mvprintw(1, 0, "Time:");
+	mvprintw(1, 8, "%2.1f", ((double)clock() / 36000));
+	mvprintw(0, 8, "%i", player->getHp());
 	enemy->check_Position(enemy, player);
 	bullet->check_Bullet(bullet, enemy);
 	if (player->getHp() <= 0)
@@ -72,10 +73,11 @@ void		scr_update( Player *player, Enemy *enemy, Enemy *bullet) {
 void		ncurses_loop( Player *player, Enemy *enemy, Enemy *bullet) {
 	struct timeval	st;
 	struct timeval	end;
-	while ( 1 )
+	while ( 1337 )
 	{
 		gettimeofday(&st, NULL);
 		get_action(player, bullet);
+		bullet->create_Bullet(bullet, player->getW(), player->getH());
 		random_generate(enemy);
 		gettimeofday(&end, NULL);
 		if (st.tv_usec < end.tv_usec)
