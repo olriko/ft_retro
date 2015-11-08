@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/08 08:43:00 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 09:26:46 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 12:05:27 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +117,15 @@ void Enemy::create_Bullet(Enemy bullet[MAX_BULLET], int w, int h){
 	}
 }
 
-void Enemy::check_Position(Enemy enemy[MAX_ENEMY]) // projectile c'est le contraire
+void Enemy::check_Position(Enemy enemy[MAX_ENEMY], Player *player) // projectile c'est le contraire
 {
 	int i = 0;
 
+(void)player;
 	while (i < MAX_ENEMY)
 	{
+		if ((player->getW() == enemy[i].getW()) && (player->getH() == enemy[i].getH()))
+			player->shoot();
 		if (enemy[i].getH() > MAX_H) // < pour le tir player qui monte
 			enemy[i].setHp(0); //destroy
 		i++;

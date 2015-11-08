@@ -6,7 +6,7 @@
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/08 08:59:33 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/08 09:26:24 by cdeniau          ###   ########.fr       */
+/*   Updated: 2015/11/08 10:32:24 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ft_retro.hpp"
 # include "Ship.hpp"
-# define MAX_ENEMY 30
+# define MAX_ENEMY 8
 # define MAX_BULLET 50
 class Enemy : public  Ship {
 
@@ -34,7 +34,7 @@ public:
 	void 			gen_Bullet();
 	void 			create_Enemy(Enemy enemy[MAX_ENEMY], int w, int h);
 	void 			create_Bullet(Enemy Bullet[MAX_BULLET], int w, int h);
-	void 			check_Position(Enemy enemy[MAX_ENEMY]);
+	void 			check_Position(Enemy enemy[MAX_ENEMY], Player *player);
 	void 			check_Bullet(Enemy bullet[MAX_BULLET], Enemy enemy[MAX_ENEMY]);
 
 private:

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ship.class.hpp                                     :+:      :+:    :+:   */
+/*   Player.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdeniau <cdeniau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/07 16:11:05 by cdeniau           #+#    #+#             */
-/*   Updated: 2015/11/07 16:18:44 by cdeniau          ###   ########.fr       */
+/*   Created: 2015/11/08 10:39:02 by cdeniau           #+#    #+#             */
+/*   Updated: 2015/11/08 10:46:35 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ public:
 	Player 					& operator=(Player const & rhs);
 
 	void			move(int c, int max_w);
-	//void			shoot(void) const;
+	void			shoot(void);
 	//void			destroy(void);
 
 private:
